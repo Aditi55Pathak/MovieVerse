@@ -19,7 +19,6 @@
 
     <properties>
         <java.version>11</java.version>
-        <mongodb-embedded.version>4.0.21</mongodb-embedded.version>
     </properties>
 
     <dependencies>
@@ -46,15 +45,7 @@
         <dependency>
             <groupId>de.flapdoodle.embed</groupId>
             <artifactId>de.flapdoodle.embed.mongo</artifactId>
-            <version>3.4.11</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Flapdoodle Embed Process -->
-        <dependency>
-            <groupId>de.flapdoodle.embed</groupId>
-            <artifactId>de.flapdoodle.embed.process</artifactId>
-            <version>3.4.13</version>
+            <version>2.2.0</version>
             <scope>test</scope>
         </dependency>
 
@@ -66,7 +57,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- MongoDB Java Driver -->
+        <!-- MongoDB Driver -->
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongodb-driver-sync</artifactId>

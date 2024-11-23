@@ -7,40 +7,21 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.3.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
 
     <groupId>movies.api</groupId>
     <artifactId>movies</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>movies</name>
-    <description>A simple APIs related to movies</description>
-    <url/>
-    
-    <licenses>
-        <license/>
-    </licenses>
-    
-    <developers>
-        <developer/>
-    </developers>
-    
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
+    <description>A simple API related to movies</description>
 
     <properties>
         <java.version>17</java.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
-        </dependency>
+        <!-- Spring Boot Web and Data MongoDB -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -48,20 +29,28 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+
+        <!-- Spring Boot Test dependency -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>me.paulschwarz</groupId>
-            <artifactId>spring-dotenv</artifactId>
-            <version>2.5.4</version>
-        </dependency>
-
+        <!-- Lombok dependency for cleaner code -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+
+        <!-- Dotenv for environment variable management -->
+        <dependency>
+            <groupId>me.paulschwarz</groupId>
+            <artifactId>spring-dotenv</artifactId>
+            <version>2.5.4</version>
         </dependency>
     </dependencies>
 
@@ -71,20 +60,24 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>${project.parent.version}</version>
             </plugin>
 
-            <!-- Maven Surefire Plugin for Test Execution -->
+            <!-- Maven Surefire Plugin for running tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version> <!-- Updated to a stable version -->
+                <version>3.0.0-M5</version>
                 <configuration>
-                    <forkCount>1</forkCount>
-                    <reuseForks>true</reuseForks>
-                    <argLine>-Dspring.profiles.active=test</argLine> <!-- Active test profile -->
+                    <!-- Use Spring Profile for Tests -->
+                    <includes>
+                        <include>**/*Tests.java</include>
+                    </includes>
+                    <!-- Set a default test failure policy -->
+                    <testFailureIgnore>false</testFailureIgnore>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
 </project>
